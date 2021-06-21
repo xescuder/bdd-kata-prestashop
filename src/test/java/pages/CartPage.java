@@ -21,9 +21,6 @@ public class CartPage {
 
     public boolean productInCart(String productText) {
         String productLocate = String.format(PRODUCT_LINE_LOCATOR, productText);
-
-        driver.findElement(By.id("contact-link")).click();
-
         viewCart.click();
         return driver.findElements(By.xpath(productLocate)).size() !=0;
     }

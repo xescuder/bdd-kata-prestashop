@@ -1,6 +1,6 @@
-Feature: Shopping basket
+Feature: Add products to basket
 
-  Scenario: Adding a product to basket
-    Given I am on a product detail page
-    When I click the add to basket button
-    Then the product is added to my shopping basket
+  Scenario: Adding a new product item to empty basket
+    Given I've an empty basket
+    When I add a product item
+    Then the basket should have 1 unit of this product item

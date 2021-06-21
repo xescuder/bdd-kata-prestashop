@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -24,14 +25,14 @@ public class Browser {
 
     public static void createAndStartService() throws IOException {
         service = new ChromeDriverService.Builder()
-                .usingDriverExecutable(new File("chromedriver.exe"))
+                .usingDriverExecutable(new File("chromedriver"))
                 .usingAnyFreePort()
                 .build();
         service.start();
     }
 
     public static void createDriver() {
-        driver = new RemoteWebDriver(service.getUrl(), DesiredCapabilities.chrome());
+        driver = new RemoteWebDriver(service.getUrl(), new ChromeOptions());
     }
 
     public static void quitDriver() {

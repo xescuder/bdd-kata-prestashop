@@ -14,7 +14,7 @@ public class ProductPage {
     @FindBy(css = "button.add-to-cart")
     private WebElement checkout;
 
-    @FindBy(xpath = "//div[@class='modal-content']//button[text()='Continuar comprando']")
+    @FindBy(xpath = "//div[@class='modal-content']//button[text()='Continue shopping']")
     private WebElement continueBuy;
 
     public ProductPage(WebDriver driver) {
@@ -22,10 +22,11 @@ public class ProductPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void addToCart() {
+    public void addToCart() throws InterruptedException {
         checkout.click();
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@id='blockcart-modal'][contains(@style, 'display: block')]")));
+        Thread.sleep(2000);
         continueBuy.click();
     }
 }
